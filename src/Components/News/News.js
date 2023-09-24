@@ -51,14 +51,14 @@ export default class News extends Component{
         return(
             
             <div className="row p-4  g-4 mb-2 " >
-            <h1 style={{width:"100%"}}>{capitalizeFirstLetter(this.props.category)} Top Articles</h1>
+            <h1 style={{width:"100%",fontFamily:"serif"}}>{capitalizeFirstLetter(this.props.category)} Top Articles</h1>
             {this.state.loading && <Spinner/>}
             <div className='row row-cols-3' style={{width:"70%",margin: "auto"}}>
           {
             this.state.articles.map(
                (elem)=>{
                 return <div className="col p-4" key={elem.url}>
-                           <NewsItem source={elem.source.name} date={elem.publishedAt} title={elem.title?elem.title:"India to launch mission to study the sun"} description={elem.description?elem.description:"Days after India's successful moon mission, the country is now setting its sights on the sun"} urlToImage={elem.urlToImage?elem.urlToImage:"https://media.cnn.com/api/v1/images/stellar/prod/230830081414-02-idalia-tarpon-springs-0830.jpg?c=16x9&q=w_800,c_fill"}/>
+                           <NewsItem source={elem.source.name} date={elem.publishedAt} title={elem.title?elem.title.slice(0,40):"India to launch mission to study the sun"} description={elem.description?elem.description:"Days after India's successful moon mission, the country is now setting its sights on the sun"} urlToImage={elem.urlToImage?elem.urlToImage:"https://media.cnn.com/api/v1/images/stellar/prod/230830081414-02-idalia-tarpon-springs-0830.jpg?c=16x9&q=w_800,c_fill"}/>
                        </div>
                }
             )
@@ -66,8 +66,8 @@ export default class News extends Component{
             
             </div>
             <div className='d-flex justify-content-around m-auto'>
-            <button type="button" class="btn btn-primary btn-lg" onClick={this.onButtonPrevious} >Previous</button>
-            <button  type="button" class="btn btn-primary btn-lg"  onClick={this.onButtonNext}>Next</button>
+            <button type="button" className="btn btn-primary btn-lg" onClick={this.onButtonPrevious} >Previous</button>
+            <button  type="button" className="btn btn-primary btn-lg"  onClick={this.onButtonNext}>Next</button>
             </div>
            
             

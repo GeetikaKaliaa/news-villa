@@ -3,7 +3,6 @@ import { Component } from 'react';
 import Navbar from './Components/Navbar/Navbar';
 import News from './Components/News/News';
 import Footer from './Components/Footer/Footer';
-// import About from './Components/About/About';
 import {
   Routes,
   Route,
@@ -11,43 +10,25 @@ import {
 } from "react-router-dom";
 import LoadingBar from 'react-top-loading-bar';
 const pageSize= 20;
-let category;
 class App extends Component{
   apiKey =process.env.React_App_News_API_KEY;
-  constructor(){
-    super();
-    this.state ={
-     inputSearch:null,
+  
+    state ={
+      progress:0
     }
-}
-state ={
-  progress:0
-}
-setProgress =(progress)=>{
-this.setState({progress:progress})
-}
-onInputChange =(event)=>{
-  this.setState({
-      inputSearch: event.target.value,
-   })
-}
-onbuttonSearch =(event)=>{
-  event.preventDefault();
-      console.log(this.state.inputSearch)
-}
-componentDidMount(){
-  category = this.state.inputSearch;
-}
+    setProgress =(progress)=>{
+    this.setState({progress:progress})
+    }
  render(){
   return(
 <>
-     <Navbar onSearchHandleInput={this.onInputChange} onButtonSearch={this.onbuttonSearch}/>
+     <Navbar />
      <LoadingBar
         color='#f11946'
         progress={this.state.progress}
       />
       <Routes>
-       <Route   path="/"  element={<News setProgress={this.setProgress}  key="general" pageSize={pageSize} apiKey={this.apiKey} category="general"/>}/> 
+       <Route   path="/"  element={<News setProgress={this.setProgress}  key="general" pageSize={pageSize} apiKey={this.apiKey} category="general" />}/> 
        <Route   path="/technology" element={<News setProgress={this.setProgress} key="technology" pageSize={pageSize} apiKey={this.apiKey} category="technology"/>}/>
        <Route   path="/entertainment" element={<News setProgress={this.setProgress} key="entertainment"  pageSize={pageSize} apiKey={this.apiKey} category="entertainment"/>}/>
        <Route   path="/science" element={<News setProgress={this.setProgress} key="science"  pageSize={pageSize} apiKey={this.apiKey} category="science"/>}/>

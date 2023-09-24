@@ -24,6 +24,7 @@
 .navbar{
   background: #000000;
   --bs-navbar-color: white;
+  --bs-navbar-padding-x: 2.5em;
   --bs-navbar-brand-color: white;
 }
 @media (prefers-reduced-motion: no-preference) {

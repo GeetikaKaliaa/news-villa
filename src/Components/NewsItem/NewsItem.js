@@ -12,7 +12,7 @@ export default class NewsItem extends Component{
       <div className="card-body">
         <span className="fst-italic" style={{fontSize: "12px"}}>{date}</span>
         <h5 className="card-title">{title}</h5>
-        <p className="card-text">{description}</p>
+        <p className="card-text" style={{fontFamily:"serif"}}>{description}</p>
         
         <button className="btn btn-primary">Read More</button>
       </div>
